@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LandingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,5 +14,5 @@ use App\Http\Controllers\DashboardController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/', [LandingController::class, 'index'])->name('landing');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
