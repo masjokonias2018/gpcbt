@@ -82,9 +82,8 @@
                                 <span class="toggler-icon"></span>
                                 <span class="toggler-icon"></span>
                             </button>
-
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                                <ul id="nav" class="navbar-nav m-auto">
+                                <ul id="nav" class="navbar-nav m-auto" data-scroll-nav="0">
                                     <li class="nav-item active">
                                         <a href="#home">Home</a>
                                     </li>
@@ -109,7 +108,7 @@
                                 </ul>
                             </div> <!-- navbar collapse -->    
                             <div class="navbar-btn btn-sm d-none d-sm-inline-block">
-                                <a class="main-btn" data-scroll-nav="0" href="#pricing">Login</a>
+                                <a class="main-btn"  href="login">Login</a>
                             </div>
                         </nav> <!-- navbar -->
                     </div>
