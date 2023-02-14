@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,4 @@ use App\Http\Controllers\LandingController;
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
+Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
