@@ -15,7 +15,7 @@
                   <input type="hidden" name="sis_id" id="sis_id" value="">
                   <div class="form-group">
                     <label>Nama</label>
-                    <input type="text" class="form-control" name="name" id="nama">
+                    <input type="text" class="form-control" name="name" id="name">
                   </div>
                   <div class="form-group">
                     <label>Jenis Kelamin</label>

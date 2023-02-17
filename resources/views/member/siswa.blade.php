@@ -1,34 +1,15 @@
-@include('_templates.dashboard._header')
-@include('_templates.dashboard._sidebar')
-<!-- Site wrapper -->
-<div class="wrapper">
-<!-- navbar -->
-@include('_templates.dashboard._navbar')
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>DataTables</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">DataTables</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-    <div class="card">
+@extends('admin.app')
+@section('judul', 'Data Siswa')
+@section('siswa', 'active')
+@section('content')
+<div class="card">
       <div class="card-header">
-        <h3 class="card-title">DataTable with default features</h3>
+        <h3 class="card-title">Tabel Data Siswa SMP Negeri 2 Blangjerango</h3>
       </div>
         <!-- /.card-header -->
       <div class="card-body">
         <div class="col-sm-12">
-          <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="example1_info">
+          <table id="example1" class="table table-bordered table-striped">
             <thead>
               <tr>
                 <th>Nama</th>
@@ -71,5 +52,29 @@
       <!-- /.card-body -->
       </div>
     </div>
-    @include('_templates.modals.modal_edit')    
-@include('_templates.dashboard._footer')
+    @include('_templates.modals.modal_edit')
+@endsection
+@extends('layouts.javascript')
+@section('script')
+<script>
+  $('#modal-edit').on('show.bs.modal', function (event){
+    var button = $(event.relatedTarget)
+    var nama = button.data('nm')
+    var gender = button.data('jk')
+    var temla = button.data('tl')
+    var tanla = button.data('tgl')
+    var agm = button.data('ag')
+    var almt = button.data('al')
+    var sis_id = button.data('sis_id')
+
+    var modal = $(this)
+    modal.find('.card-body #name').val(nama);
+    modal.find('.card-body #jenis_kelamin').val(gender);
+    modal.find('.card-body #tempat_lahir').val(temla);
+    modal.find('.card-body #tanggal_lahir').val(tanla);
+    modal.find('.card-body #agama').val(agm);
+    modal.find('.card-body #alamat').val(almt);
+    modal.find('.card-body #sis_id').val(sis_id);
+  })
+</script>
+@endsection

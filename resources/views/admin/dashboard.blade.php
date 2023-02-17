@@ -1,16 +1,8 @@
-@include('_templates.dashboard._header')
-@include('_templates.dashboard._sidebar')
-<!-- Site wrapper -->
-<div class="wrapper">
-<!-- navbar -->
-@include('_templates.dashboard._navbar')
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header p-0 d-flex align-items-end" style="height: 400px; background: url('adminlte/dist/img/wall37.jpg')">
-      <div class="container-fluid pl-0 pr-0 pb-0 pt-4" style="background-color: rgba(255,255,255,0.7)">
-      <div class="container-fluid">
-        <div class="row">
+@extends('admin.app')
+@section('judul', 'Dashboard')
+@section('dashboard', 'active')
+@section('content')
+      <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small card -->
             <div class="small-box bg-info">
@@ -78,14 +70,4 @@
               </a>
             </div>
           </div>
-          <!-- ./col -->
-      </div><!-- /.container-fluid -->
-    </div>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-
-    </section>
-    <!-- /.content -->
-@include('_templates.dashboard._footer')
+@endsection
