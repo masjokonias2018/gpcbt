@@ -19,4 +19,24 @@ class SiswaController extends Controller
         $sis->update($request->all());
         return back();
     }
+
+    public function store(Request $request)
+    {
+        $add=new Siswa;
+        $add->name=$request->name;
+        $add->jenis_kelamin=$request->jenis_kelamin;
+        $add->tempat_lahir=$request->tempat_lahir;
+        $add->tanggal_lahir=$request->tanggal_lahir;
+        $add->agama=$request->agama;
+        $add->alamat=$request->alamat;
+        $add->save();
+        return back();
+    }
+
+    public function delete($id)
+    {
+        $data= Siswa::find($id);
+        $data->delete();
+        return back();
+    }
 }

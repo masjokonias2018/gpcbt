@@ -5,6 +5,11 @@
 <div class="card">
       <div class="card-header">
         <h3 class="card-title">Tabel Data Siswa SMP Negeri 2 Blangjerango</h3>
+        
+        <h3 data-toggle="modal" type="button" class="card-title float-right" data-target="#modal-tambah">
+          <i class="fas fa-plus"></i>
+        </h3>
+        
       </div>
         <!-- /.card-header -->
       <div class="card-body">
@@ -31,8 +36,9 @@
                   <td>{{$siswa->agama}}</td>
                   <td>{{$siswa->alamat}}</td>
                   <td>
-                    <button 
+                    <span 
                       type="button" 
+                      class="badge bg-warning"
                       data-toggle="modal" 
                       data-nm="{{ $siswa->name }}" 
                       data-jk="{{ $siswa->jenis_kelamin }}"
@@ -41,9 +47,11 @@
                       data-ag="{{ $siswa->agama }}"
                       data-al="{{ $siswa->alamat }}"
                       data-sis_id="{{ $siswa->id }}"
-                      data-target="#modal-edit" 
-                      class="btn btn-block btn-warning btn-xs">Edit
-                    </button>
+                      data-target="#modal-edit">Edit
+                    </span>
+                    <a href="siswa/delete/{{$siswa->id}}" type="button">
+                    <span  class="badge bg-danger">Hapus</span>
+                    </a>
                   </td>  
                 </tr>
                 @endforeach
@@ -53,6 +61,7 @@
       </div>
     </div>
     @include('_templates.modals.modal_edit')
+    @include('_templates.modals.modal_tambah')
 @endsection
 @extends('layouts.javascript')
 @section('script')

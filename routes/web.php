@@ -20,4 +20,6 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
 Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
-Route::patch('/siswa', [SiswaController::class, 'update'])->name('siswa.id');
+Route::patch('/siswa', [SiswaController::class, 'update'])->name('siswa.edit');
+Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.tambah');
+Route::get('/siswa/delete/{id}', [SiswaController::class, 'delete'])->name('siswa.hapus');
