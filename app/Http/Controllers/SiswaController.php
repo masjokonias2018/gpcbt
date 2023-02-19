@@ -37,6 +37,7 @@ class SiswaController extends Controller
     {
         $data= Siswa::find($id);
         $data->delete();
-        return back();
+        // return response()->json(['status' => 'Siswa Berhasil di hapus!']); 
+        return redirect('/siswa');
     }
 }

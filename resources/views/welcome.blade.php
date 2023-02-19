@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     
     <!--====== Title ======-->
-    <title>Consult - Business Consultancy Agency Template | Home</title>
+    <title>{{env('APP_NAME')}} | Guru Penggerak Ketukah - CBT</title>
     
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -136,7 +136,7 @@
             </div> <!-- container -->
             <div class="header-hero-image d-flex align-items-center wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="1.1s">
                 <div class="image">
-                    <img src="assets_landing/images/hero-image.png" alt="Hero Image">
+                    <img src="assets_landing/images/hero-img.png" alt="Hero Image">
                 </div>
             </div> <!-- header hero image -->
         </div> <!-- header hero -->

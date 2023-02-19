@@ -2,12 +2,15 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title text-sm">Edit Data {{$siswa->name}}</h4>
+              @if ($siswa->count() > 0)
+              <h4 class="modal-title text-sm">EDIT DATA {{$siswa->name}}</h4>
+              @else
+              <h4 class="modal-title text-sm">Sekolah ini belum ada siswa</h4>
+              @endif
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-              <!-- form start -->
               <form action="{{route('siswa.edit')}}" method="post">
                 {{method_field('patch')}}
                 {{csrf_field()}}
@@ -42,11 +45,7 @@
                   <button type="button" class="btn btn-default" data-dismiss="modal">Nanti Saja</button>
                   <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                 </div>
-                <!-- /.card-body -->
               </form>
           </div>
-          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
       </div>
-      <!-- /.modal -->
