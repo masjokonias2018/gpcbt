@@ -15,13 +15,29 @@ class SiswaController extends Controller
 
     public function update(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'jenis_kelamin' => 'required',
+            'tempat_lahir' => 'required',
+            'agama' => 'required',
+            'alamat' => 'required|max:50|min:3',
+            'tanggal_lahir' => 'required',
+        ]);
         $sis= Siswa::findOrFail($request->sis_id);
         $sis->update($request->all());
-        return back();
+        return back()->with('suksesedit','Selamat, data yang anda ubah berhasil diupdate ke database aplikasi GPK-CBT');
     }
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'jenis_kelamin' => 'required',
+            'tempat_lahir' => 'required',
+            'agama' => 'required',
+            'alamat' => 'required|max:50|min:3',
+            'tanggal_lahir' => 'required',
+        ]);
         $add=new Siswa;
         $add->name=$request->name;
         $add->jenis_kelamin=$request->jenis_kelamin;
@@ -30,14 +46,13 @@ class SiswaController extends Controller
         $add->agama=$request->agama;
         $add->alamat=$request->alamat;
         $add->save();
-        return back();
+        return back()->with('suksestambah','Selamat, data yang anda input berhasil disimpan ke database aplikasi GPK-CBT');
     }
 
     public function delete($id)
     {
         $data= Siswa::find($id);
         $data->delete();
-        // return response()->json(['status' => 'Siswa Berhasil di hapus!']); 
-        return redirect('/siswa');
+        return back()->with('sukseshapus','Selamat, data yang anda delete berhasil dihapus dari database aplikasi GPK-CBT');
     }
 }

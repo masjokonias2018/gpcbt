@@ -2,6 +2,7 @@
 @section('style')
 <link rel="stylesheet" href="{{asset('adminlte/plugins/sweetalert2/sweetalert2.min.css')}}">
 <link rel="stylesheet" href="{{asset('adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
+<link rel="stylesheet" href="{{asset('adminlte/plugins/toastr/toastr.min.css')}}">
 @stop
 @section('judul', 'Data Siswa')
 @section('siswa', 'active')
@@ -13,7 +14,7 @@
           <i class="fas fa-plus"></i>
         </h3>
       </div>
-      <div class="card-body">
+      <div class="card-body"> 
         <div class="col-sm-12">
           <table id="tabelsiswa" class="table table-bordered table-striped">
               <thead>
@@ -32,7 +33,6 @@
                 @if ($siswa->count() > 0)
                 @foreach($siswa as $no => $siswa)
                 <tr>
-                  <!-- <input type="hidden" class="delete_id" value="{{ $siswa->id }}"> -->
                   <th>{{ $no+1 }}</th>  
                   <td>{{$siswa->name}}</td>
                   <td>{{$siswa->jenis_kelamin}}</td>
@@ -54,17 +54,9 @@
                       data-sis_id="{{ $siswa->id }}"
                       data-target="#modal-edit">Edit
                     </span>
-                    <!-- <a href="siswa/delete/{{$siswa->id}}" type="button">
-                      <span  class="badge bg-danger">Hapus</span>
-                    </a> -->
                     <a href="#" type="button" >
                       <span siswa-id="{{$siswa->id}}" siswa-nama="{{$siswa->name}}" class="badge bg-danger delete">Hapus</span>
                     </a>
-                    <!-- <form action="{{ route('siswa.hapus', $siswa->id) }}" method="POST">
-                      @csrf
-                      @method('delete')
-                      <button class="btn btn-danger btn-sm btndelete">Hapus</button>
-                    </form> -->
                   </td>  
                 </tr>
                 @endforeach
@@ -128,25 +120,78 @@
         }).then((result) => {
           if (result.isConfirmed) {
             window.location="/siswa/delete/"+siswa_id+""
-            swalWithBootstrapButtons.fire(
-              'Terhapus!',
-              'Data siswa berhasil dihapus.',
-              'success'
-            )
           } else if (
             /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
           ) {
             swalWithBootstrapButtons.fire(
-              'Gagal',
+              'Batal',
               'Data siswa ini masih aman :)',
-              'error'
+              'warning'
             )
           }
         })
   })
-</script>  
-<script>
-          
 </script>
+<script src="{{asset('adminlte/plugins/toastr/toastr.min.js')}}"></script>  
+<script>
+  @if(Session::has('suksestambah'))
+  $(function() {
+    var Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+    $(function() {
+      Toast.fire({
+        icon: 'success',
+        title: '{{Session::get('suksestambah')}}'
+      })
+    });
+  });
+  @endif
+
+  @if(Session::has('suksesedit'))
+  $(function() {
+    var Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+    $(function() {
+      Toast.fire({
+        icon: 'success',
+        title: '{{Session::get('suksesedit')}}'
+      })
+    });
+  });
+  @endif
+
+  @if(Session::has('sukseshapus'))
+  $(function() {
+    var Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+    $(function() {
+      Toast.fire({
+        icon: 'success',
+        title: '{{Session::get('sukseshapus')}}'
+      })
+    });
+  });
+  @endif
+</script>
+<script>
+
+</script>
+<script>
+  @if ($errors->has('name')||$errors->has('jenis_kelamin')||$errors->has('agama')||$errors->has('tempat_lahir')||$errors->has('tanggal_lahir')||$errors->has('alamat'))
+      $('#modal-tambah').modal('show');
+   @endif
+  </script>
 @stop
