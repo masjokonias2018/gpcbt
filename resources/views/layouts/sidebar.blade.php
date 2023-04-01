@@ -40,6 +40,15 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="/guru" class="nav-link @yield('guru')">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Guru
+                <span class="right badge badge-info">Baru</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>

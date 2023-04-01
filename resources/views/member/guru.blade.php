@@ -4,19 +4,19 @@
 <link rel="stylesheet" href="{{asset('adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
 <link rel="stylesheet" href="{{asset('adminlte/plugins/toastr/toastr.min.css')}}">
 @stop
-@section('judul', 'Data Siswa')
-@section('siswa', 'active')
+@section('judul', 'Data Guru')
+@section('guru', 'active')
 @section('content')
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Tabel Data Siswa SMP Negeri 2 Blangjerango</h3>        
+        <h3 class="card-title">Tabel Data Guru SMP Negeri 2 Blangjerango</h3>        
         <h3 data-toggle="modal" type="button" class="card-title float-right" data-target="#modal-tambah">
           <i class="fas fa-plus"></i>
         </h3>
       </div>
       <div class="card-body"> 
         <div class="col-sm-12">
-          <table id="tabelsiswa" class="table table-bordered table-striped">
+          <table id="tabelguru" class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>No</th>
@@ -30,32 +30,32 @@
                 </tr>
               </thead>
               <tbody>
-                @if ($siswa->count() > 0)
-                @foreach($siswa as $no => $siswa)
+                @if ($guru->count() > 0)
+                @foreach($guru as $no => $guru)
                 <tr>
                   <th>{{ $no+1 }}</th>  
-                  <td>{{$siswa->name}}</td>
-                  <td>{{$siswa->jenis_kelamin}}</td>
-                  <td>{{$siswa->tempat_lahir}}</td>
-                  <td>{{$siswa->tanggal_lahir}}</td>
-                  <td>{{$siswa->agama}}</td>
-                  <td>{{$siswa->alamat}}</td>
+                  <td>{{$guru->name}}</td>
+                  <td>{{$guru->jenis_kelamin}}</td>
+                  <td>{{$guru->tempat_lahir}}</td>
+                  <td>{{$guru->tanggal_lahir}}</td>
+                  <td>{{$guru->agama}}</td>
+                  <td>{{$guru->alamat}}</td>
                   <td>
                     <span 
                       type="button" 
                       class="badge bg-warning"
                       data-toggle="modal" 
-                      data-nm="{{ $siswa->name }}" 
-                      data-jk="{{ $siswa->jenis_kelamin }}"
-                      data-tl="{{ $siswa->tempat_lahir }}"
-                      data-tgl="{{ $siswa->tanggal_lahir }}"
-                      data-ag="{{ $siswa->agama }}"
-                      data-al="{{ $siswa->alamat }}"
-                      data-sis_id="{{ $siswa->id }}"
+                      data-nm="{{ $guru->name }}" 
+                      data-jk="{{ $guru->jenis_kelamin }}"
+                      data-tl="{{ $guru->tempat_lahir }}"
+                      data-tgl="{{ $guru->tanggal_lahir }}"
+                      data-ag="{{ $guru->agama }}"
+                      data-al="{{ $guru->alamat }}"
+                      data-sis_id="{{ $guru->id }}"
                       data-target="#modal-edit">Edit
                     </span>
                     <a href="#" type="button" >
-                      <span siswa-id="{{$siswa->id}}" siswa-nama="{{$siswa->name}}" class="badge bg-danger delete">Hapus</span>
+                      <span guru-id="{{$guru->id}}" guru-nama="{{$guru->name}}" class="badge bg-danger delete">Hapus</span>
                     </a>
                   </td>  
                 </tr>
@@ -70,8 +70,7 @@
         </div>
       </div>
     </div>
-    @include('_templates.modals.modal_edit')
-    @include('_templates.modals.modal_tambah')
+    @include('_templates.modals.modal_tambahguru')
 @stop
 
 @section('script')
@@ -99,8 +98,8 @@
 <script src="{{asset('adminlte/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 <script>
   $('.delete').click(function(){
-    var siswa_id=$(this).attr('siswa-id');
-    var siswa_nm=$(this).attr('siswa-nama');
+    var guru_id=$(this).attr('guru-id');
+    var guru_nm=$(this).attr('guru-nama');
       const swalWithBootstrapButtons = Swal.mixin({
           customClass: {
             confirmButton: 'btn btn-success',
@@ -111,7 +110,7 @@
 
         swalWithBootstrapButtons.fire({
           title: 'Yakin?',
-          text: "Anda akan menghapus "+siswa_nm+ "?",
+          text: "Anda akan menghapus "+guru_nm+ "?",
           icon: 'warning',
           showCancelButton: true,
           confirmButtonText: 'Ya Hapus!',
@@ -119,14 +118,14 @@
           reverseButtons: true
         }).then((result) => {
           if (result.isConfirmed) {
-            window.location="/siswa/delete/"+siswa_id+""
+            window.location="/guru/delete/"+guru_id+""
           } else if (
             /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
           ) {
             swalWithBootstrapButtons.fire(
               'Batal',
-              'Data siswa ini masih aman :)',
+              'Data guru ini masih aman :)',
               'warning'
             )
           }

@@ -20,15 +20,15 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3>{{$jumlahg}} Orang</h3>
 
-                <p>Bounce Rate</p>
+                <p>Jumlah Guru</p>
               </div>
               <div class="icon">
                 <i class="fas fa-user-clock"></i>
               </div>
-              <a href="#" class="small-box-footer">
-                More info <i class="fas fa-arrow-circle-right"></i>
+              <a href="/guru" class="small-box-footer">
+                Detail <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>
           </div>
