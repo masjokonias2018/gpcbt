@@ -25,7 +25,7 @@
                   <th>Tempat Lahir</th>
                   <th>Tanggal Lahir</th>
                   <th>Agama</th>
-                  <th>Alamat</th>
+                  <th>Mapel</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -41,6 +41,9 @@
                   <td>{{$guru->agama}}</td>
                   <td>{{$guru->alamat}}</td>
                   <td>
+                    <a href="/guru/{{$guru->id}}/profile" type="button">
+                      <span class="badge bg-info"><i class="nav-icon fas fa-eye"></i></span>
+                    </a>
                     <span 
                       type="button" 
                       class="badge bg-warning"
@@ -57,6 +60,7 @@
                     <a href="#" type="button" >
                       <span guru-id="{{$guru->id}}" guru-nama="{{$guru->name}}" class="badge bg-danger delete">Hapus</span>
                     </a>
+
                   </td>  
                 </tr>
                 @endforeach

@@ -10,4 +10,9 @@ class Guru extends Model
     protected $table = 'master_guru';
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function mapel()
+    {
+        return $this->hasMany(Mapel::class);
+    }
 }

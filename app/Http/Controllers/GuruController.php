@@ -7,9 +7,16 @@ use App\Models\Guru;
 
 class GuruController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $guru= Guru::all();
         return view('member.guru', compact(['guru']));
+    }
+
+    public function profile($id)
+    {
+        $profile = Guru::find($id);
+        return view('member.profile_guru', compact(['profile']));
     }
 
     public function store(Request $request)
@@ -33,4 +40,6 @@ class GuruController extends Controller
         $add->save();
         return back()->with('suksestambah','Selamat, data yang anda input berhasil disimpan ke database aplikasi GPK-CBT');
     }
+
+
 }
